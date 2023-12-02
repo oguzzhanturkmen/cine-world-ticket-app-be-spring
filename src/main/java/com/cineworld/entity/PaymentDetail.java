@@ -1,5 +1,6 @@
 package com.cineworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class PaymentDetail {
     private String cvv;
 
     @OneToOne(mappedBy = "paymentDetail")
+    @JsonIgnore
     private Booking booking;
 }
 
