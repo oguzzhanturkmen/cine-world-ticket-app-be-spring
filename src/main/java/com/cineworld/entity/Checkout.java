@@ -31,7 +31,7 @@ public class Checkout {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "checkout_time")
     private Date checkoutTime;
-
+    //private String checkoutTime;
 
 
 
