@@ -1,5 +1,6 @@
 package com.cineworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -20,9 +21,11 @@ public class Theater {
     private int numberOfScreens;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Screen> screens;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Showtime> showtimes;
 }
 

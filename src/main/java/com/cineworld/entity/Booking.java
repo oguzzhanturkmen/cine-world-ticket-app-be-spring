@@ -1,5 +1,6 @@
 package com.cineworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -17,14 +18,17 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "showtime_id", nullable = false)
+    @JsonIgnore
     private Showtime showtime;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_detail_id", referencedColumnName = "paymentDetailId")
+    @JsonIgnore
     private PaymentDetail paymentDetail;
 
     private int numberOfSeats;

@@ -1,5 +1,6 @@
 package com.cineworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,7 @@ public class Movie {
     private double rating;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Showtime> showtimes;
 }
 

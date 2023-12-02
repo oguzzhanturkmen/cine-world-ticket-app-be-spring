@@ -1,5 +1,6 @@
 package com.cineworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,8 +23,10 @@ public class Screen {
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
+    @JsonIgnore
     private Theater theater;
 
     @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Showtime> showtimes;
 }
