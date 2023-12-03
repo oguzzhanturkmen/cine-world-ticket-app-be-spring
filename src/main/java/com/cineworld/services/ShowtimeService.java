@@ -52,6 +52,10 @@ public class ShowtimeService {
         showtimeRepository.deleteById(id);
     }
 
+    public List<Showtime> getShowtimesByMovieId(Long id) {
+        return showtimeRepository.findByMovieId(id);
+    }
+
     // Additional methods can be added as per your application's requirements.
 }
 
