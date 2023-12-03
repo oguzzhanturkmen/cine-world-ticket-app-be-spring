@@ -1,6 +1,7 @@
 package com.cineworld.controllers;
 
 import com.cineworld.entity.Showtime;
+import com.cineworld.responses.ShowtimeResponse;
 import com.cineworld.services.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -61,5 +62,14 @@ public class ShowtimeController {
             return ResponseEntity.notFound().build(); // Consider more specific error handling
         }
     }
+    @GetMapping("/movie/{id}")
+    public List<ShowtimeResponse> getShowtimesByMovieId(@PathVariable Long id) {
+        return showtimeService.getShowtimesByMovieId(id);
+
+    }
+
+
+
+
 }
 
