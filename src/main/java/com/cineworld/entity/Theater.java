@@ -14,7 +14,7 @@ import java.util.List;
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long theaterId;
+    private Long id;
 
     private String name;
     private String location;

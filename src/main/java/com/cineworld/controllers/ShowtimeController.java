@@ -68,6 +68,13 @@ public class ShowtimeController {
 
     }
 
+    //get showtime by theater id and movie id
+    @GetMapping("/theater/{theaterId}/movie/{movieId}")
+    public List<Showtime> getShowtimesByTheaterIdAndMovieId(@PathVariable Long theaterId, @PathVariable Long movieId) {
+        return showtimeService.getShowtimesByTheaterIdAndMovieId(theaterId, movieId);
+    }
+
+
 
 
 
