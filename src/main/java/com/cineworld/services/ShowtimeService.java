@@ -1,18 +1,24 @@
 package com.cineworld.services;
 
 import com.cineworld.entity.Showtime;
+import com.cineworld.entity.Theater;
 import com.cineworld.repos.ShowtimeRepository;
+import com.cineworld.repos.TheaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ShowtimeService {
 
     @Autowired
     private ShowtimeRepository showtimeRepository;
+
 
     // Create a new showtime
     public Showtime createShowtime(Showtime showtime) {
@@ -53,9 +59,20 @@ public class ShowtimeService {
     }
 
     public List<Showtime> getShowtimesByMovieId(Long id) {
-        return showtimeRepository.findByMovieId(id);
+        return showtimeRepository.findAllByMovieId(id);
+    }
+
+    public List<Theater> getTheatersByMovieId(Long id) {
+
+
+       List<Theater> list =  showtimeRepository.findAllByMovieId(id).stream().map(Showtime::getTheater).toList();
+        Map<String, Theater> uniqueTheatersMap = list.stream()
+                .collect(Collectors.toMap(Theater::getName, theater -> theater, (theater1, theater2) -> theater1));
+
+        return new ArrayList<>(uniqueTheatersMap.values());
     }
 
     // Additional methods can be added as per your application's requirements.
 }
+
 
