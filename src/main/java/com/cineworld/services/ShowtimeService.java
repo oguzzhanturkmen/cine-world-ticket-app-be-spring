@@ -72,7 +72,12 @@ public class ShowtimeService {
         return new ArrayList<>(uniqueTheatersMap.values());
     }
 
-    // Additional methods can be added as per your application's requirements.
+    // get showtimes by theater id and movie id
+    public List<Showtime> getShowtimesByTheaterIdAndMovieId(Long theaterId, Long movieId) {
+        return showtimeRepository.findAllByTheater_IdAndMovieId(theaterId, movieId);
+    }
+
+
 }
 
 
