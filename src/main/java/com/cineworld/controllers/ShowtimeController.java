@@ -1,7 +1,7 @@
 package com.cineworld.controllers;
 
 import com.cineworld.entity.Showtime;
-import com.cineworld.responses.ShowtimeResponse;
+import com.cineworld.entity.Theater;
 import com.cineworld.services.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -63,10 +63,11 @@ public class ShowtimeController {
         }
     }
     @GetMapping("/movie/{id}")
-    public List<ShowtimeResponse> getShowtimesByMovieId(@PathVariable Long id) {
-        return showtimeService.getShowtimesByMovieId(id);
+    public List<Theater> getTheaterByMovieId(@PathVariable Long id) {
+        return showtimeService.getTheatersByMovieId(id);
 
     }
+
 
 
 
