@@ -61,5 +61,9 @@ public class SeatController {
             return ResponseEntity.notFound().build(); // Consider more specific error handling
         }
     }
+    @GetMapping("/screen/{screenId}")
+    public ResponseEntity<List<Seat>> getSeatsByScreenId(@PathVariable Long screenId) {
+        return ResponseEntity.ok(seatService.getSeatsByScreenId(screenId));
+    }
 }
 
