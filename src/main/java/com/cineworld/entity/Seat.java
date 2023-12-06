@@ -13,7 +13,9 @@ import lombok.*;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seatId;
+    private Long id;
+
+    private Character rowChar;
 
     @ManyToOne
     @JoinColumn(name = "screen_id", nullable = false)

@@ -51,6 +51,10 @@ public class SeatService {
         seatRepository.deleteById(id);
     }
 
+    public List<Seat> getSeatsByScreenId(Long screenId) {
+        return seatRepository.findByScreenId(screenId);
+    }
+
     // Additional methods can be added as per your application's requirements.
 }
 

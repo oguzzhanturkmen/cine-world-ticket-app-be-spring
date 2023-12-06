@@ -1,6 +1,7 @@
 package com.cineworld.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,10 +17,13 @@ import java.util.List;
 public class Screen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long screenId;
+    private Long id;
 
     private int screenNumber;
     private int capacity;
+
+
+
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)

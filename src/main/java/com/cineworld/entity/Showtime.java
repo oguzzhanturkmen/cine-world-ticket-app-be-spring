@@ -21,17 +21,17 @@ public class Showtime {
 
     @ManyToOne
     @JoinColumn(name = "movie_id", nullable = false)
-    @JsonIgnore
+
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
-    @JsonIgnore
+
     private Theater theater;
 
     @ManyToOne
     @JoinColumn(name = "screen_id", nullable = false)
-    @JsonIgnore
+
     private Screen screen;
 
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
