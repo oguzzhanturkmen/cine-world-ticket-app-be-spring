@@ -17,6 +17,7 @@ public class PaymentDetail {
     private Long paymentDetailId;
 
     private String cardNumber;
+
     private LocalDate expirationDate;
     private String cardHolderName;
     private String cvv;

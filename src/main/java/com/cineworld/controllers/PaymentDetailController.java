@@ -1,5 +1,9 @@
 package com.cineworld.controllers;
 
+import com.cineworld.DTO.PaymentDetailDTO;
+import com.cineworld.DTO.PaymentRequest;
+import com.cineworld.DTO.PaymentResponse;
+import com.cineworld.DTO.UserDTO;
 import com.cineworld.entity.PaymentDetail;
 import com.cineworld.services.PaymentDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +21,7 @@ public class PaymentDetailController {
     private PaymentDetailService paymentDetailService;
 
     // Create a new payment detail
-    @PostMapping("/")
-    public ResponseEntity<PaymentDetail> createPaymentDetail(@RequestBody PaymentDetail paymentDetail) {
-        PaymentDetail newPaymentDetail = paymentDetailService.createPaymentDetail(paymentDetail);
-        return ResponseEntity.ok(newPaymentDetail);
-    }
+
 
     // Get a single payment detail by ID
     @GetMapping("/{id}")
@@ -59,6 +59,12 @@ public class PaymentDetailController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping("/")
+    public PaymentResponse createPaymentDetail(@RequestBody PaymentRequest paymentRequest) {
+       PaymentResponse response =paymentDetailService.savePaymentAndUser(paymentRequest);
+         return response;
+
     }
 }
 
