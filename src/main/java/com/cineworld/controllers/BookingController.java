@@ -1,5 +1,6 @@
 package com.cineworld.controllers;
 
+import com.cineworld.DTO.BookingDTO;
 import com.cineworld.entity.Booking;
 import com.cineworld.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,7 @@ public class BookingController {
     private BookingService bookingService;
 
     // Create a new booking
-    @PostMapping("/")
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
-        try {
-            Booking newBooking = bookingService.createBooking(booking);
-            return ResponseEntity.ok(newBooking);
-        } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
+
 
     // Get a single booking by ID
     @GetMapping("/{id}")
@@ -38,10 +31,7 @@ public class BookingController {
     }
 
     // Get all bookings
-    @GetMapping("/")
-    public List<Booking> getAllBookings() {
-        return bookingService.getAllBookings();
-    }
+
 
     // Update a booking
     @PutMapping("/{id}")
@@ -64,5 +54,10 @@ public class BookingController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/")
+    public void saveBooking(@RequestBody BookingDTO bookingDTO) {
+       bookingService.saveBooking(bookingDTO);
+    }
+
 }
 

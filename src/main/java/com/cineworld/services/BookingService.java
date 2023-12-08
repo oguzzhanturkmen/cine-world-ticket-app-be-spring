@@ -1,14 +1,13 @@
 package com.cineworld.services;
 
-import com.cineworld.entity.Booking;
-import com.cineworld.entity.Showtime;
-import com.cineworld.repos.BookingRepository;
-import com.cineworld.repos.ShowtimeRepository;
+import com.cineworld.DTO.BookingDTO;
+import com.cineworld.entity.*;
+import com.cineworld.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +19,14 @@ public class BookingService {
 
     @Autowired
     private ShowtimeRepository showtimeRepository;
+
+    @Autowired
+    private PaymentDetailRepository paymentDetailRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private SeatRepository seatRepository;
 
     // Create a new booking
     public Booking createBooking(Booking booking) {
@@ -66,7 +73,35 @@ public class BookingService {
         bookingRepository.save(booking);
     }
 
-    // Additional methods can be added as per your application's requirements.
+    public void saveBooking(BookingDTO booking) {
+        PaymentDetail paymentDetail = paymentDetailRepository.findById(Long.valueOf(booking.getPaymentDetailId())).get();
+        Showtime showtime = showtimeRepository.findById(Long.valueOf(booking.getShowTimeId())).get();
+        User user = userRepository.findById(Long.valueOf(booking.getUserId())).get();
+        Booking booking1 = new Booking();
+        LocalDate localDate = LocalDate.now();
+        booking1.setBookingTime(localDate.atStartOfDay());
+        booking1.setNumberOfSeats(booking.getSeats().size());
+        booking1.setPaymentDetail(paymentDetail);
+        booking1.setShowtime(showtime);
+
+        booking1.setTotalPrice(booking.getTotalPrice());
+        booking1.setUser(user);
+        bookingRepository.save(booking1);
+
+        booking.getSeats().forEach(s -> {
+            Seat seat = seatRepository.findById(s.getSeatId())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid seat ID: " + s.getSeatId()));
+
+            seat.setStatus("reserved");
+
+            // ... update other fields as necessary
+
+            seatRepository.save(seat);
+
+
+    }
+    );
+    }
 }
 
 
