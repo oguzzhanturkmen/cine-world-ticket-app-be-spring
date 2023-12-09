@@ -55,6 +55,10 @@ public class SeatService {
         return seatRepository.findByScreenId(screenId);
     }
 
+    public List<Seat> getSeatsByIds(List<Long> ids) {
+        return seatRepository.findByIdIn(ids);
+    }
+
     // Additional methods can be added as per your application's requirements.
 }
 

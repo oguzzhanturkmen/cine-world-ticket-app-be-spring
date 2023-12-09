@@ -65,5 +65,10 @@ public class SeatController {
     public ResponseEntity<List<Seat>> getSeatsByScreenId(@PathVariable Long screenId) {
         return ResponseEntity.ok(seatService.getSeatsByScreenId(screenId));
     }
+    //get seats from array of ids
+    @GetMapping("/ids")
+public ResponseEntity<List<Seat>> getSeatsByIds(@RequestParam List<Long> ids) {
+        return ResponseEntity.ok(seatService.getSeatsByIds(ids));
+    }
 }
 
