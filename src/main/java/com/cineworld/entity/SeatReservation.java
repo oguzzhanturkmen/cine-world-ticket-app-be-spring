@@ -5,23 +5,25 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "seats")
+@Table(name = "seat_reservations")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Seat {
+public class SeatReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Character rowChar;
+    @ManyToOne
+    @JoinColumn(name = "seat_id", nullable = false)
+    private Seat seat;
 
     @ManyToOne
-    @JoinColumn(name = "screen_id", nullable = false)
-    @JsonIgnore
-    private Screen screen;
+    @JoinColumn(name = "showtime_id", nullable = false)
+    private Showtime showtime;
 
-    private String seatNumber;
+
+
 
 }

@@ -20,7 +20,7 @@ public class Screen {
     private Long id;
 
     private int screenNumber;
-    private int capacity;
+
 
 
 

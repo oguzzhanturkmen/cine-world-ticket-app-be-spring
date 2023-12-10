@@ -37,7 +37,7 @@ public class SeatService {
 
         seat.setScreen(seatDetails.getScreen());
         seat.setSeatNumber(seatDetails.getSeatNumber());
-        seat.setStatus(seatDetails.getStatus());
+
         // ... update other fields as necessary
 
         return seatRepository.save(seat);
