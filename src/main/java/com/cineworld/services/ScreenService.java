@@ -36,7 +36,7 @@ public class ScreenService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid screen ID: " + id));
 
         screen.setScreenNumber(screenDetails.getScreenNumber());
-        screen.setCapacity(screenDetails.getCapacity());
+
         screen.setTheater(screenDetails.getTheater());
         // ... update other fields as necessary
 

@@ -37,5 +37,9 @@ public class Showtime {
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Booking> bookings;
+
+    @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<SeatReservation> seatReservations;
 }
 

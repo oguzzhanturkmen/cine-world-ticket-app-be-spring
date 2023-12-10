@@ -27,6 +27,8 @@ public class BookingService {
 
     @Autowired
     private SeatRepository seatRepository;
+    @Autowired
+    private SeatReservationRepository seatReservationRepository;
 
     // Create a new booking
     public Booking createBooking(Booking booking) {
@@ -91,12 +93,12 @@ public class BookingService {
         booking.getSeats().forEach(s -> {
             Seat seat = seatRepository.findById(s.getSeatId())
                     .orElseThrow(() -> new IllegalArgumentException("Invalid seat ID: " + s.getSeatId()));
+            SeatReservation seatReservation = new SeatReservation();
+            seatReservation.setSeat(seat);
+            seatReservation.setShowtime(showtime);
 
-            seat.setStatus("reserved");
 
-            // ... update other fields as necessary
-
-            seatRepository.save(seat);
+            seatReservationRepository.save(seatReservation);
 
 
     }
