@@ -25,16 +25,17 @@ public class Movie {
     private Integer tmdbId ;
 
     @Column(columnDefinition = "text")
-    private String description;
-    private int duration;
-    private String genre;
+
+
+
     private String director;
 
-    private LocalDate releaseDate;
+
     private double rating;
     private String posterUrl;
     private String trailerUrl;
     private String backdropUrl;
+    private String row;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonIgnore
