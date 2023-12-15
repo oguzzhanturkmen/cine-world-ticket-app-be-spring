@@ -6,9 +6,7 @@
 This repository contains the backend code for the Cinema Reservation System, a Java Spring Boot application that handles the management of cinema operations including movie listings, showtimes, seat reservations, and payment processing.
 React native repo is here --> https://github.com/oguzzhanturkmen/cineworld-ticket-app-react-native
 
-## Entity-Relationship Diagram
-![Entity-Relationship Diagram](/path/to/your/erd/image.png)
-*Note: Replace the above path with the actual path to the ERD image in your repository.*
+
 
 ## Database Schema
 The backend is structured around several key entities:
